@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity(name = "tag")
 public class TagEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

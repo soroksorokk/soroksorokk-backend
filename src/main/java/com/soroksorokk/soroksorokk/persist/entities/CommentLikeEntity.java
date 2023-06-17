@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity(name = "comment_like")
 public class CommentLikeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

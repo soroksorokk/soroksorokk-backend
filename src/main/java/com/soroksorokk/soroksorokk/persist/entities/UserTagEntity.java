@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity(name = "user_tag")
 public class UserTagEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity(name = "bookmark")
 public class BookmarkEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

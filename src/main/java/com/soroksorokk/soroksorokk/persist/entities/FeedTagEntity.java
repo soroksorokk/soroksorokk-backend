@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity(name = "feed_tag")
 public class FeedTagEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

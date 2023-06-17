@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity(name = "follower")
 public class FollowerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

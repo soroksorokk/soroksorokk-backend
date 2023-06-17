@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity(name = "feed")
 public class FeedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
