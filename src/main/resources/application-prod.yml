@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/sorok?serverTimezone=UTC&characterEncoding=UTF-8
+    username: username
+    password: password
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true

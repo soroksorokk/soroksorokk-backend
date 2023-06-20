@@ -1,3 +1,5 @@
 spring:
   profiles:
-    active: local
+    active: prod
+
+# db username, password ? ??? ?? and application.yml local, prod ??? ?? ?? ??
