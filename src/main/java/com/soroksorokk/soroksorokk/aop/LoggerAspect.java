@@ -17,7 +17,7 @@ public class LoggerAspect {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     // when
-    @Before("excution(* com.soroksorokk.soroksorokk.*(..)")
+    @Before("execution(* com.soroksorokk.soroksorokk.*.*(..))")
     public void loggerBeforeRun(JoinPoint joinPoint) {
         logger.info("parameters: {}", joinPoint.getArgs());
     }
