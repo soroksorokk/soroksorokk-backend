@@ -18,7 +18,7 @@ class DefaultUserRepositoryTest {
 
 
     @Test
-    void save() {
+    void saveAndExistsByEmail() {
         // given
         UserEntity newUser = UserEntity.builder()
                 .nickname("nickname")

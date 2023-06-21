@@ -1,9 +1,11 @@
 package com.soroksorokk.soroksorokk.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.soroksorokk.soroksorokk.auth.dto.request.EmailRequestDto;
 import com.soroksorokk.soroksorokk.auth.dto.request.SignupRequestDto;
 import com.soroksorokk.soroksorokk.auth.service.AuthService;
 import com.soroksorokk.soroksorokk.exception.GlobalExceptionHandler;
+import com.soroksorokk.soroksorokk.user.service.ValidateUserInfoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,8 @@ public class AuthControllerTest {
     @MockBean
     AuthService authService;
 
+    @MockBean
+    ValidateUserInfoService validateUserInfoService;
 
     @Test
         void 회원가입_201() throws Exception {
@@ -40,6 +44,16 @@ public class AuthControllerTest {
                 .content(objectMapper.writeValueAsString(new SignupRequestDto("nickname", "email@email.com", "password",
                 ""       ))).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+        //then
+        }
+    @Test
+        void 이메일_중복_검사_200() throws Exception{
+        // given
+        // when
+        this.mvc.perform(post("/auth/signup/validate/email")
+                .content(objectMapper.writeValueAsString(new EmailRequestDto("email@emai.com")))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
         //then
         }
 }
