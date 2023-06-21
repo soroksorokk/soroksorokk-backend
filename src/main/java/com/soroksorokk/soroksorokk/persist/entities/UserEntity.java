@@ -2,13 +2,11 @@ package com.soroksorokk.soroksorokk.persist.entities;
 
 import com.soroksorokk.soroksorokk.persist.common.BaseTimeEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -53,4 +51,19 @@ public class UserEntity extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "user")
     private List<UserTagEntity> userTags;
+
+    @Builder
+    public UserEntity(String nickname, String email, String password, String img) {
+        this.nickname = nickname;
+        this.email = email;
+        this.password = password;
+        this.img = img;
+        this.feeds = Collections.emptyList();
+        this.comments = Collections.emptyList();
+        this.replies = Collections.emptyList();
+        this.bookmarks = Collections.emptyList();
+        this.followers = Collections.emptyList();
+        this.followings = Collections.emptyList();
+        this.userTags = Collections.emptyList();
+    }
 }
