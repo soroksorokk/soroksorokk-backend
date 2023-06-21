@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8080:8080
+    depends_on:
+      - mysql
     restart: always
     networks:
       - sorok-networks
@@ -21,8 +23,6 @@ services:
       - MYSQL_USER=username
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=sorok
-    depends_on:
-      - api-server
     restart: always
     networks:
       - sorok-networks
