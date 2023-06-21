@@ -1,0 +1,28 @@
+spring:
+  security:
+    user:
+      username: username
+      password: password
+
+  datasource:
+    url: jdbc:tc:mysql:8.0.27://localhost/db01
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    username: user
+    password: password
+
+  dbcp2:
+    driver-class-name: com.mysql.jdbc.Driver
+    test-on-borrow: true
+    validation-query: SELECT 1
+    max-total: 1
+
+  jpa:
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
