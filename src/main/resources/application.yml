@@ -1,5 +1,8 @@
 spring:
   profiles:
-    active: prod
+    active: local
 
+jwt:
+  secret: rkGU45258GGhiolLO2465TFY5345kGU45258GGhiolLO2465TFY5345
+  validateTimeMS: 1800000
 # db username, password ? ??? ?? and application.yml local, prod ??? ?? ?? ??
