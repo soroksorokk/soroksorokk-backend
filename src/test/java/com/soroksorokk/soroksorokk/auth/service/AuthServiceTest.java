@@ -61,13 +61,13 @@ class AuthServiceTest {
         when(request.password()).thenReturn("password");
         when(userRepository.findByEmail(anyString())).thenReturn(user);
         when(passwordEncoder.matches(anyString(), anyString())).thenReturn(true);
-        when(tokenProvider.createToken(anyLong())).thenReturn("jwtToken");
+        when(tokenProvider.createToken(anyString())).thenReturn("jwtToken");
         // when
         LoginResponseDto result = authService.login(request);
         //then
         verify(userRepository).findByEmail(anyString());
         verify(passwordEncoder).matches(anyString(), anyString());
-        verify(tokenProvider).createToken(anyLong());
+        verify(tokenProvider).createToken(anyString());
         assertThat(result).isInstanceOf(LoginResponseDto.class);
         assertThat(result).hasFieldOrProperty("jwtToken");
     }

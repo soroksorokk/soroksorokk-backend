@@ -33,7 +33,7 @@ public class AuthService implements AuthUseCase {
             throw new InvalidEmailOrPasswordException();
         }
 
-        JwtToken jwtToken = new JwtToken(tokenProvider.createToken(dbUser.getId()));
+        JwtToken jwtToken = new JwtToken(tokenProvider.createToken(dbUser.getEmail()));
 
         return new LoginResponseDto(jwtToken);
     }
