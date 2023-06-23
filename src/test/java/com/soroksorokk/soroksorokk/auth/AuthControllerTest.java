@@ -2,6 +2,7 @@ package com.soroksorokk.soroksorokk.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.soroksorokk.soroksorokk.auth.dto.request.EmailRequestDto;
+import com.soroksorokk.soroksorokk.auth.dto.request.LoginRequestDto;
 import com.soroksorokk.soroksorokk.auth.dto.request.SignupRequestDto;
 import com.soroksorokk.soroksorokk.auth.service.AuthService;
 import com.soroksorokk.soroksorokk.exception.GlobalExceptionHandler;
@@ -56,4 +57,15 @@ public class AuthControllerTest {
                 .andExpect(status().isOk());
         //then
         }
+
+    @Test
+    void login() throws Exception {
+        // given
+        // when
+        this.mvc.perform(post("/auth/signup/validate/email")
+                        .content(objectMapper.writeValueAsString(new LoginRequestDto("email@email.com", "password")))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+        //then
+    }
 }

@@ -9,6 +9,6 @@ public class EmailInUseException extends BusinessException {
     public static final ErrorMessage error = ErrorMessage.EMAIL_ALREADY_IN_USE;
 
     public EmailInUseException() {
-        super(error.getMsg(), error.getStatus());
+        super(error);
     }
 }
