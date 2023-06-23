@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: local
+    active: ${active}
 
 jwt:
   secret: rkGU45258GGhiolLO2465TFY5345kGU45258GGhiolLO2465TFY5345
