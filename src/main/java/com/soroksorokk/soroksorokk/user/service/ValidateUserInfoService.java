@@ -1,6 +1,6 @@
 package com.soroksorokk.soroksorokk.user.service;
 
-import com.soroksorokk.soroksorokk.auth.exception.EmailInUseException;
+import com.soroksorokk.soroksorokk.user.exception.EmailInUseException;
 import com.soroksorokk.soroksorokk.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +23,12 @@ public class ValidateUserInfoService {
     }
 
     public boolean existsByNickname(String nickname) {
-        return userRepository.existsByEmail(nickname);
+        boolean exists = userRepository.existsByNickname(nickname);
+
+        if (exists) {
+            throw new EmailInUseException();
+        }
+
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package com.soroksorokk.soroksorokk.auth.exception;
+package com.soroksorokk.soroksorokk.user.exception;
 
 import com.soroksorokk.soroksorokk.exception.BusinessException;
 import com.soroksorokk.soroksorokk.exception.ErrorMessage;
