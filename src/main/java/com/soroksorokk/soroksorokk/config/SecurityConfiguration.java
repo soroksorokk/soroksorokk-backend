@@ -22,9 +22,13 @@ public class SecurityConfiguration {
     private final TokenProvider tokenProvider;
     private final UserRepository userRepository;
 
-    public SecurityConfiguration(TokenProvider tokenProvider, UserRepository userRepository) {
+    private final UserDetailsService userDetailsService;
+
+    public SecurityConfiguration(TokenProvider tokenProvider, UserRepository userRepository,
+                                 UserDetailsService userDetailsService) {
         this.tokenProvider = tokenProvider;
         this.userRepository = userRepository;
+        this.userDetailsService = userDetailsService;
     }
 
     @Bean
@@ -38,11 +42,6 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        return new JwtUserDetailsService(userRepository);
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> {
@@ -52,9 +51,10 @@ public class SecurityConfiguration {
                     auth.anyRequest().authenticated();
                 })
                 .addFilterBefore(jwtVerificationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .userDetailsService(userDetailsService())
+                .userDetailsService(userDetailsService)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }
+
 }

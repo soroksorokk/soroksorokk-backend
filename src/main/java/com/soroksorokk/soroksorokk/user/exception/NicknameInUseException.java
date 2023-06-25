@@ -6,7 +6,8 @@ import com.soroksorokk.soroksorokk.exception.ErrorMessage;
 public class NicknameInUseException extends BusinessException {
     public static ErrorMessage error = ErrorMessage.NICKNAME_ALREADY_IN_USE;
 
-    protected NicknameInUseException(ErrorMessage error) {
+    public NicknameInUseException() {
         super(error);
     }
+
 }
