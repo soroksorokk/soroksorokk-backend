@@ -1,10 +1,8 @@
 package com.soroksorokk.soroksorokk.persist.entities;
 
+import com.soroksorokk.soroksorokk.persist.entities.enums.Emotion;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -24,7 +22,8 @@ public class FeedEntity {
     private String text;
 
     @Column(length = 100, nullable = false, unique = true)
-    private String emotion; // enum
+    @Enumerated(EnumType.STRING)
+    private Emotion emotion; // enum
 
     @Column(nullable = false)
     private String songName;
@@ -49,4 +48,17 @@ public class FeedEntity {
 
     @OneToMany(mappedBy = "feed")
     private List<FeedTagEntity> feedTags;
+
+    @Builder
+    public FeedEntity(String title, String text, Emotion emotion, String songName, String coverImg,
+                      boolean isFinish, String category, UserEntity user) {
+        this.title = title;
+        this.text = text;
+        this.emotion = emotion;
+        this.songName = songName;
+        this.coverImg = coverImg;
+        this.isFinish = isFinish;
+        this.category = CategoryEntity.builder().name(category).build();
+        this.user = user;
+    }
 }

@@ -1,10 +1,7 @@
 package com.soroksorokk.soroksorokk.persist.entities;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -22,4 +19,9 @@ public class CategoryEntity {
 
     @OneToMany(mappedBy = "category")
     private List<FeedEntity> feeds;
+
+    @Builder
+    public CategoryEntity(String name) {
+        this.name = name;
+    }
 }
