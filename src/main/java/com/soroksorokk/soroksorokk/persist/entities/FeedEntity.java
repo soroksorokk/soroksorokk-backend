@@ -1,5 +1,6 @@
 package com.soroksorokk.soroksorokk.persist.entities;
 
+import com.soroksorokk.soroksorokk.persist.common.BaseTimeEntity;
 import com.soroksorokk.soroksorokk.persist.entities.enums.Emotion;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,8 +10,9 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 @Entity(name = "feed")
-public class FeedEntity {
+public class FeedEntity extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -51,14 +53,14 @@ public class FeedEntity {
 
     @Builder
     public FeedEntity(String title, String text, Emotion emotion, String songName, String coverImg,
-                      boolean isFinish, String category, UserEntity user) {
+                      boolean isFinish, CategoryEntity category, UserEntity user) {
         this.title = title;
         this.text = text;
         this.emotion = emotion;
         this.songName = songName;
         this.coverImg = coverImg;
         this.isFinish = isFinish;
-        this.category = CategoryEntity.builder().name(category).build();
+        this.category = category;
         this.user = user;
     }
 }

@@ -2,6 +2,7 @@ package com.soroksorokk.soroksorokk.feed;
 
 import com.soroksorokk.soroksorokk.category.service.CategoryService;
 import com.soroksorokk.soroksorokk.feed.dto.request.CreateFeedRequestDto;
+import com.soroksorokk.soroksorokk.feed.dto.response.GetAllFeedsResponseDto;
 import com.soroksorokk.soroksorokk.feed.repository.FeedRepository;
 import com.soroksorokk.soroksorokk.persist.entities.CategoryEntity;
 import com.soroksorokk.soroksorokk.persist.entities.FeedEntity;
@@ -9,6 +10,8 @@ import com.soroksorokk.soroksorokk.persist.entities.UserEntity;
 import com.soroksorokk.soroksorokk.user.service.GetUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class FeedService {
@@ -40,5 +43,9 @@ public class FeedService {
                 .build();
 
         feedRepository.createFeed(newFeed);
+    }
+
+    public List<GetAllFeedsResponseDto> getAllFeeds() {
+        return feedRepository.getAllFeeds();
     }
 }

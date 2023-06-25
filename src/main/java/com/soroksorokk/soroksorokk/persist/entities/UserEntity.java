@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @OnDelete(action = OnDeleteAction.CASCADE)
-@Entity(name = "`user`")
+@Entity(name = "\"user\"")
 public class UserEntity extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
