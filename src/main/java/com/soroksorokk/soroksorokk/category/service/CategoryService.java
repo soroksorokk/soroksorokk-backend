@@ -16,6 +16,11 @@ public class CategoryService {
     }
 
     @Transactional
+    public CategoryEntity getCategoryById(Long id) {
+        return categoryRepository.getCategoryById(id);
+    }
+
+    @Transactional
     public void createCategory(String categoryName) {
         boolean exists = categoryRepository.existsByName(categoryName);
 

@@ -1,5 +1,6 @@
 package com.soroksorokk.soroksorokk.category.repository;
 
+import com.soroksorokk.soroksorokk.category.exception.CategoryNotFoundException;
 import com.soroksorokk.soroksorokk.persist.entities.CategoryEntity;
 import com.soroksorokk.soroksorokk.persist.repository.CategoryJpaRepository;
 import org.springframework.stereotype.Repository;
@@ -21,5 +22,11 @@ public class JpaCategoryRepository implements CategoryRepository{
     @Override
     public boolean existsByName(String categoryName) {
         return categoryRepository.existsByName(categoryName);
+    }
+
+    @Override
+    public CategoryEntity getCategoryById(Long id) {
+        return categoryRepository.findById(id)
+                .orElseThrow(CategoryNotFoundException::new);
     }
 }

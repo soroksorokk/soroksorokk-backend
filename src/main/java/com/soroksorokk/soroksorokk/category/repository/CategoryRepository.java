@@ -6,4 +6,6 @@ public interface CategoryRepository {
     CategoryEntity createCategory(CategoryEntity category);
 
     boolean existsByName(String categoryName);
+
+    CategoryEntity getCategoryById(Long id);
 }

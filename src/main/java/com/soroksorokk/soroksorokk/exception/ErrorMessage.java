@@ -10,7 +10,8 @@ public enum ErrorMessage {
     NICKNAME_ALREADY_IN_USE("사용중인 닉네임 입니다.", HttpStatus.BAD_REQUEST),
     INVALID_EMAIL_OR_PASSWORD("이메일 혹은 비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST),
     INVALID_JWT_TOKEN("유요한 JWT가 아닙니다.", HttpStatus.BAD_REQUEST),
-    DUPLICATED_CATEGORY_NAME("중복된 카테고리명이 존재합니다.", HttpStatus.BAD_REQUEST);
+    DUPLICATED_CATEGORY_NAME("중복된 카테고리명이 존재합니다.", HttpStatus.BAD_REQUEST),
+    CATEGORY_NOT_FOUND("카테고리를 찾을 수 없습니다.", HttpStatus.BAD_REQUEST);
 
     final String msg;
     final HttpStatus status;
