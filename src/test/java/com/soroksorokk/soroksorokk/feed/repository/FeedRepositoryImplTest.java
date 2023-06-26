@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @RepositoryTest
-class DefaultFeedRepositoryTest {
+class FeedRepositoryImplTest {
     @Autowired
     FeedRepository feedRepository;
 
@@ -56,4 +56,5 @@ class DefaultFeedRepositoryTest {
         //then
         assertThat(feed).isNotNull();
         }
+
 }

@@ -45,6 +45,7 @@ public class FeedService {
         feedRepository.createFeed(newFeed);
     }
 
+    @Transactional(readOnly = true)
     public List<GetAllFeedsResponseDto> getAllFeeds() {
         return feedRepository.getAllFeeds();
     }
