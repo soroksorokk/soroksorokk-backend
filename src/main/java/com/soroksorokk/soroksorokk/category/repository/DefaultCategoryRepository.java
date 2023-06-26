@@ -6,11 +6,11 @@ import com.soroksorokk.soroksorokk.persist.repository.CategoryJpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class JpaCategoryRepository implements CategoryRepository{
+public class DefaultCategoryRepository implements CategoryRepository{
 
     private final CategoryJpaRepository categoryRepository;
 
-    public JpaCategoryRepository(CategoryJpaRepository categoryRepository) {
+    public DefaultCategoryRepository(CategoryJpaRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
