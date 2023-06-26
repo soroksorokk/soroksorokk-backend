@@ -4,6 +4,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.soroksorokk.soroksorokk.persist.entities.CategoryEntity;
 import com.soroksorokk.soroksorokk.persist.entities.QCategoryEntity;
 
+import java.util.List;
+
 public class CategoryQueryRepositoryImpl implements CategoryQueryRepository {
     private final JPAQueryFactory jpaQueryFactory;
 
@@ -29,5 +31,13 @@ public class CategoryQueryRepositoryImpl implements CategoryQueryRepository {
                 .from(category)
                 .where(category.id.eq(id))
                 .fetchOne();
+    }
+
+    @Override
+    public List<CategoryEntity> getAllCategories() {
+        QCategoryEntity category = QCategoryEntity.categoryEntity;
+        return jpaQueryFactory.select(category)
+                .from(category)
+                .fetch();
     }
 }

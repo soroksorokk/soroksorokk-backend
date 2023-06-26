@@ -5,6 +5,8 @@ import com.soroksorokk.soroksorokk.persist.entities.CategoryEntity;
 import com.soroksorokk.soroksorokk.persist.repository.CategoryJpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class DefaultCategoryRepository implements CategoryRepository{
 
@@ -29,4 +31,11 @@ public class DefaultCategoryRepository implements CategoryRepository{
         return categoryRepository.findById(id)
                 .orElseThrow(CategoryNotFoundException::new);
     }
+
+    @Override
+    public List<CategoryEntity> getAllCategories() {
+        return categoryRepository.getAllCategories();
+    }
+
+
 }

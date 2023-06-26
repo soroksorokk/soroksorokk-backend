@@ -1,12 +1,13 @@
 package com.soroksorokk.soroksorokk.category;
 
 import com.soroksorokk.soroksorokk.category.dto.request.CreateCategoryRequestDto;
+import com.soroksorokk.soroksorokk.category.dto.response.GetAllCategoriesResponseDto;
 import com.soroksorokk.soroksorokk.category.service.CategoryService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("categories")
@@ -22,5 +23,10 @@ public class CategoryController {
     @PostMapping
     public void createCategory(CreateCategoryRequestDto request) {
         categoryService.createCategory(request.categoryName());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<GetAllCategoriesResponseDto>> getAllCategories() {
+        return ResponseEntity.ok(categoryService.getAllCategories());
     }
 }
