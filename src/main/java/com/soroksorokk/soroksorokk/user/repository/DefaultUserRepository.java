@@ -2,11 +2,10 @@ package com.soroksorokk.soroksorokk.user.repository;
 
 import com.soroksorokk.soroksorokk.persist.entities.UserEntity;
 import com.soroksorokk.soroksorokk.persist.repository.UserJpaRepository;
-import com.soroksorokk.soroksorokk.user.exception.UserNotFoundException;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DefaultUserRepository implements UserRepository{
+public class DefaultUserRepository implements UserRepository {
     private final UserJpaRepository userRepository;
 
     public DefaultUserRepository(UserJpaRepository userRepository) {
@@ -30,7 +29,6 @@ public class DefaultUserRepository implements UserRepository{
 
     @Override
     public UserEntity findByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(UserNotFoundException::new);
+        return userRepository.findByEmail(email);
     }
 }

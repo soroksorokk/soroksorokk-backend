@@ -1,5 +1,6 @@
 package com.soroksorokk.soroksorokk.user.repository;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.soroksorokk.soroksorokk.persist.entities.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 @SpringBootTest
 @Testcontainers
-class DefaultUserRepositoryTest {
+class UserRepositoryImplTest {
     private static final MySQLContainer mySQLContainer = new MySQLContainer(DockerImageName.parse("mysql:8.0"))
             .withDatabaseName("test")
             .withUsername("user")
@@ -24,9 +25,11 @@ class DefaultUserRepositoryTest {
     static {
         mySQLContainer.start();
     }
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
-    DefaultUserRepository userRepository;
+    JPAQueryFactory jpaQueryFactory;
 
     @Autowired
     PasswordEncoder passwordEncoder;

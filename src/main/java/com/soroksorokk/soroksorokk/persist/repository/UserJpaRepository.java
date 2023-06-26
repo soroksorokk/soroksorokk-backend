@@ -1,16 +1,11 @@
 package com.soroksorokk.soroksorokk.persist.repository;
 
 import com.soroksorokk.soroksorokk.persist.entities.UserEntity;
+import com.soroksorokk.soroksorokk.user.repository.UserQueryRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.RepositoryDefinition;
 
-import java.util.Optional;
+@RepositoryDefinition(domainClass = UserEntity.class, idClass = Long.class)
+public interface UserJpaRepository extends JpaRepository<UserEntity, Long>, UserQueryRepository {
 
-@Repository
-public interface UserJpaRepository extends JpaRepository<UserEntity, Long> {
-    boolean existsByEmail(String email);
-
-    boolean existsByNickname(String nickname);
-
-    Optional<UserEntity> findByEmail(String email);
 }
