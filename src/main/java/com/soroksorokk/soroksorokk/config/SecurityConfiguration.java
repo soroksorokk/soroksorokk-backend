@@ -50,7 +50,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(toH2Console()).permitAll();
                     auth.requestMatchers(HttpMethod.GET, "/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**").permitAll();
-                    auth.requestMatchers(HttpMethod.GET, "/feeds").permitAll();
+                    auth.requestMatchers(HttpMethod.GET, "/feeds/**").permitAll();
                     auth.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
                     auth.requestMatchers("/auth/**").permitAll();
                     auth.anyRequest().authenticated();

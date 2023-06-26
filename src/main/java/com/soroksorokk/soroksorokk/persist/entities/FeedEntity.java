@@ -1,11 +1,13 @@
 package com.soroksorokk.soroksorokk.persist.entities;
 
+import com.soroksorokk.soroksorokk.feed.dto.request.UpdateFeedRequestDto;
 import com.soroksorokk.soroksorokk.persist.common.BaseTimeEntity;
 import com.soroksorokk.soroksorokk.persist.entities.enums.Emotion;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @AllArgsConstructor
@@ -43,13 +45,13 @@ public class FeedEntity extends BaseTimeEntity {
     private UserEntity user;
 
     @OneToMany(mappedBy = "feed")
-    private List<CommentEntity> comments;
+    private Set<CommentEntity> comments;
 
     @OneToMany(mappedBy = "feed")
-    private List<BookmarkEntity> bookmarks;
+    private Set<BookmarkEntity> bookmarks;
 
     @OneToMany(mappedBy = "feed")
-    private List<FeedTagEntity> feedTags;
+    private Set<FeedTagEntity> feedTags;
 
     @Builder
     public FeedEntity(String title, String text, Emotion emotion, String songName, String coverImg,
@@ -62,5 +64,19 @@ public class FeedEntity extends BaseTimeEntity {
         this.isFinish = isFinish;
         this.category = category;
         this.user = user;
+    }
+
+    public void updateFeed(UpdateFeedRequestDto request, CategoryEntity category) {
+        this.title = request.title();
+        this.text = request.text();
+        this.emotion = request.emotion();
+        this.songName = request.songName();
+        this.coverImg = request.coverImg();
+        this.isFinish = request.isFinish();
+        this.category = category;
+    }
+
+    public boolean validateWriter(long userId) {
+        return Objects.equals(this.user.getId(), id);
     }
 }

@@ -8,5 +8,9 @@ import java.util.List;
 public interface FeedRepository {
     FeedEntity createFeed(FeedEntity feed);
 
-    List<GetAllFeedsResponseDto> getAllFeeds();
+    List<FeedEntity> getAllFeeds();
+
+    FeedEntity getFeedById(Long id);
+
+    void deleteFeedById(Long id);
 }

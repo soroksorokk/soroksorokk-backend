@@ -1,6 +1,8 @@
 package com.soroksorokk.soroksorokk.feed;
 
 import com.soroksorokk.soroksorokk.feed.dto.request.CreateFeedRequestDto;
+import com.soroksorokk.soroksorokk.feed.dto.request.GetFeedResponseDto;
+import com.soroksorokk.soroksorokk.feed.dto.request.UpdateFeedRequestDto;
 import com.soroksorokk.soroksorokk.feed.dto.response.GetAllFeedsResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,6 @@ public class FeedController {
         this.feedService = feedService;
     }
 
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void createFeed(CreateFeedRequestDto request, @AuthenticationPrincipal UserDetails user) {
@@ -29,5 +30,21 @@ public class FeedController {
     @GetMapping
     public ResponseEntity<List<GetAllFeedsResponseDto>> getAllFeeds() {
         return ResponseEntity.ok(feedService.getAllFeeds());
+    }
+
+    @PutMapping("/{id}")
+    public void updateFeed(@PathVariable("id") Long id, @RequestBody UpdateFeedRequestDto request,
+                           @AuthenticationPrincipal UserDetails userDetails) {
+        feedService.updateFeed(id, request, userDetails.getUsername());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GetFeedResponseDto> getFeed(@PathVariable("id") Long id) {
+         return ResponseEntity.ok(feedService.getFeed(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteFeed(@PathVariable("id") Long id) {
+        feedService.deleteFeedById(id);
     }
 }

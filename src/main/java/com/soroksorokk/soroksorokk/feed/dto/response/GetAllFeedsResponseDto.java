@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 public class GetAllFeedsResponseDto {
@@ -22,14 +23,14 @@ public class GetAllFeedsResponseDto {
     private final int bookmarkCnt;
     private final CategoryEntity category;
     private final GetUserResponseDto user;
-    private final List<FeedTagEntity> feedTags;
+    private final Set<FeedTagEntity> feedTags;
 
 
     @Builder
     public GetAllFeedsResponseDto(String title, String text, Emotion emotion, String songName, String coverImg,
                                   boolean isFinish, CategoryEntity category, UserEntity user,
-                                  List<BookmarkEntity> bookmarks,
-                                  List<FeedTagEntity> feedTags) {
+                                  Set<BookmarkEntity> bookmarks,
+                                  Set<FeedTagEntity> feedTags) {
         this.title = title;
         this.text = text;
         this.emotion = emotion;
