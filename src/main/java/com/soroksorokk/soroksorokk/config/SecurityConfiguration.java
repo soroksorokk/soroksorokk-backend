@@ -49,7 +49,10 @@ public class SecurityConfiguration {
         return http
                 .authorizeHttpRequests(auth -> {
 //                    auth.requestMatchers(toH2Console()).permitAll(); aws 배포시 오류 발생
-                    auth.requestMatchers(HttpMethod.GET, "/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**").permitAll();
+                    auth.requestMatchers(HttpMethod.GET, "/api-docs/**" ,"/v3/api-docs/**", "/swagger-ui**/**",
+                            "/swagger" +
+                            "-resources" +
+                            "/**").permitAll();
                     auth.requestMatchers(HttpMethod.GET, "/feeds/**").permitAll();
                     auth.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
                     auth.requestMatchers("/auth/**").permitAll();
