@@ -19,7 +19,7 @@ public class UserTagController {
 
     @PostMapping
     public void createUserTag(
-            CreateUserTagRequestDto request,
+            @RequestBody CreateUserTagRequestDto request,
             @AuthenticationPrincipal UserDetails userDetails) {
         userTagService.createUserTag(userDetails.getUsername(), request);
     }
@@ -27,7 +27,7 @@ public class UserTagController {
     @PutMapping("/{id}")
     public void modifyUserTag(
             @PathVariable("id") Long id,
-            ModifyUserTagRequestDto request,
+            @RequestBody ModifyUserTagRequestDto request,
             @AuthenticationPrincipal UserDetails userDetails) {
         userTagService.modifyUserTag(userDetails.getUsername(), id, request);
     }

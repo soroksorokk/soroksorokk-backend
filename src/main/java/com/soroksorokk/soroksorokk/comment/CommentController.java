@@ -19,13 +19,14 @@ public class CommentController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
-    public void createComment(CreateCommentRequestDto request,
+    public void createComment(@RequestBody CreateCommentRequestDto request,
                               @AuthenticationPrincipal UserDetails userDetails) {
         commentService.createComment(request, userDetails.getUsername());
     }
 
     @PutMapping("/{commentId}")
-    public void updateComment(UpdateCommentRequestDto request, @PathVariable("commentId") Long commentId,
+    public void updateComment(@RequestBody UpdateCommentRequestDto request,
+                              @PathVariable("commentId") Long commentId,
                               @AuthenticationPrincipal UserDetails userDetails) {
         commentService.updateComment(commentId, userDetails.getUsername(), request);
     }
